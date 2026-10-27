@@ -1,6 +1,145 @@
 <!doctype html>
-<html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muy pronto</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FFF7E8;color:#3B2A20;font:18px/1.4 system-ui,sans-serif;text-align:center;padding:24px}</style></head>
-<body><main><h1>Muy pronto</h1><p>Esta página se está construyendo con Claude.</p></main></body>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f5ef">
+<title>Portal de facturación OCSO</title>
+<meta name="description" content="Factura tu compra de OCSO con el folio y el total de tu ticket. Portal de práctica: las facturas no tienen validez fiscal.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%231c1b19' stroke-width='5'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%231c1b19'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="logo" aria-label="OCSO">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="5"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+    <span>OCSO</span>
+  </div>
+  <p class="etiqueta">Portal de práctica</p>
+</header>
+
+<main>
+
+  <!-- Paso 1: el ticket -->
+  <section id="paso1" class="paso" aria-labelledby="t1">
+    <div class="contenido">
+      <h1 id="t1" tabindex="-1">Factura tu compra</h1>
+      <p class="sub">Escribe el folio y el total de tu ticket. Se factura dentro del mes de la compra.</p>
+      <form id="form-ticket" novalidate autocomplete="off">
+        <label for="folio">Folio del ticket</label>
+        <input id="folio" name="folio" inputmode="numeric" placeholder="104-0012457" enterkeyhint="next" spellcheck="false">
+        <label for="total">Total del ticket</label>
+        <div class="con-signo"><span aria-hidden="true">$</span><input id="total" name="total" inputmode="decimal" maxlength="10" placeholder="86.00" enterkeyhint="go"></div>
+        <p id="error-ticket" class="error" role="alert" hidden></p>
+      </form>
+      <section id="hechas" class="hechas" hidden aria-labelledby="t-hechas">
+        <h2 id="t-hechas">Facturas hechas en este celular</h2>
+        <ul id="lista-hechas"></ul>
+      </section>
+    </div>
+    <div class="barra">
+      <button type="button" id="escanear" class="sec" hidden>Escanear QR</button>
+      <button type="submit" form="form-ticket" id="buscar" class="prim">Buscar mi ticket</button>
+    </div>
+  </section>
+
+  <!-- Paso 2: datos fiscales -->
+  <section id="paso2" class="paso" aria-labelledby="t2" hidden>
+    <div class="contenido">
+      <h1 id="t2" tabindex="-1">Tus datos fiscales</h1>
+      <div id="resumen" class="tarjeta"></div>
+      <p class="sub">Cópialos tal como vienen en tu Constancia de Situación Fiscal.</p>
+      <div id="perfiles" class="chips" role="group" aria-label="Llenar con datos guardados"></div>
+      <form id="form-fiscal" novalidate autocomplete="on">
+        <label for="rfc">RFC</label>
+        <input id="rfc" name="rfc" maxlength="13" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="XOJI740919U48" enterkeyhint="next">
+        <p class="pista" id="pista-rfc"></p><p class="error" id="error-rfc" role="alert" hidden></p>
+
+        <label for="nombre">Nombre o razón social</label>
+        <input id="nombre" name="nombre" maxlength="254" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Como en tu Constancia" enterkeyhint="next">
+        <p class="error" id="error-nombre" role="alert" hidden></p>
+
+        <label for="cp">Código postal fiscal</label>
+        <input id="cp" name="cp" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="76028" enterkeyhint="next">
+        <p class="error" id="error-cp" role="alert" hidden></p>
+
+        <label for="regimen">Régimen fiscal</label>
+        <select id="regimen" name="regimen"></select>
+        <p class="error" id="error-regimen" role="alert" hidden></p>
+
+        <label for="uso">Uso del CFDI</label>
+        <select id="uso" name="uso"></select>
+        <p class="error" id="error-uso" role="alert" hidden></p>
+
+        <label for="correo">Correo <span class="opc">(opcional)</span></label>
+        <input id="correo" name="correo" type="email" maxlength="120" autocomplete="email" placeholder="tu-correo@ejemplo.com" enterkeyhint="done">
+        <p class="error" id="error-correo" role="alert" hidden></p>
+
+        <label class="casilla"><input type="checkbox" id="guardar"> Guardar mis datos en este celular</label>
+        <p id="error-fiscal" class="error" role="alert" hidden></p>
+      </form>
+    </div>
+    <div class="barra">
+      <button type="button" id="atras" class="sec">Atrás</button>
+      <button type="submit" form="form-fiscal" id="revisar" class="prim">Revisar y facturar</button>
+    </div>
+  </section>
+
+  <!-- Paso 3: listo -->
+  <section id="paso3" class="paso" aria-labelledby="t3" hidden>
+    <div class="contenido centro">
+      <div class="festejo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="84" height="84"><circle class="aro" cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="5"/><path class="palomita" d="M19 33l9 9 18-20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <h1 id="t3" tabindex="-1">¡Listo! Factura emitida</h1>
+      <dl id="datos-factura" class="datos"></dl>
+      <p class="aviso">Guarda tus archivos: este ticket ya no se puede volver a facturar.<br>Factura de práctica, sin validez fiscal.</p>
+    </div>
+    <div class="barra columna">
+      <button type="button" id="bajar-pdf" class="prim">Descargar PDF</button>
+      <div class="fila">
+        <button type="button" id="bajar-xml" class="sec">Descargar XML</button>
+        <button type="button" id="compartir" class="sec" hidden>Compartir</button>
+      </div>
+      <button type="button" id="otro" class="texto">Facturar otro ticket</button>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <details>
+    <summary>Aviso de privacidad</summary>
+    <p>OCSO recibe tu RFC, nombre, código postal, régimen y correo solo para emitir tu factura de práctica. No los compartimos con nadie ni los usamos para otra cosa. Se guardan en la base de datos del curso; para darte de baja y borrar tus datos, escribe a quien imparte el curso.</p>
+  </details>
+  <p>Material de práctica de un curso. Ningún ticket ni factura es un comprobante real ni de ninguna cadena existente.</p>
+</footer>
+
+<!-- Confirmar: hoja que sube desde abajo, al alcance del pulgar -->
+<dialog id="confirmar" aria-labelledby="t-conf">
+  <h2 id="t-conf">¿Todo está bien?</h2>
+  <dl id="datos-confirmar" class="datos"></dl>
+  <p class="aviso">Cada ticket se factura una sola vez. Revisa tus datos antes de seguir.</p>
+  <p id="error-confirmar" class="error" role="alert" hidden></p>
+  <div class="columna">
+    <button type="button" id="si-facturar" class="prim">Sí, facturar</button>
+    <button type="button" id="corregir" class="sec">Corregir</button>
+  </div>
+</dialog>
+
+<!-- Escáner del QR del ticket -->
+<dialog id="escaner" aria-label="Escanear el QR del ticket">
+  <video id="video" playsinline muted></video>
+  <p class="aviso">Apunta al código QR del ticket.</p>
+  <button type="button" id="cerrar-escaner" class="sec">Cerrar</button>
+</dialog>
+
+<script src="config.js"></script>
+<script src="cfdi.js"></script>
+<script src="qr.js"></script>
+<script src="pdf.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
