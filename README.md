@@ -20,3 +20,17 @@ El ejemplo es la **Chamarra Ligera Girasol** de Boutique El Girasol, una tienda 
 ## Regla de oro con Netlify
 
 Cada publicación de `main` gasta créditos del plan gratis. Los cambios se hacen en una rama y se revisan en la vista previa del Pull Request, que es gratis. Se fusiona una sola vez, cuando ya quedó.
+
+## Portal de facturación OCSO (práctica)
+
+`sitio/` ahora es el portal de facturación de OCSO: la persona escribe el folio y el total de su ticket (o lo escanea), captura sus datos fiscales y descarga su CFDI 4.0 de práctica en PDF y XML. Está pensado para usarse con una sola mano: los botones van abajo y los campos usan el teclado correcto.
+
+| Archivo | Para qué |
+|---|---|
+| `.claude/skills/reglas-cfdi/` | Reglas del CFDI 4.0 que sigue el portal |
+| `.claude/agents/revisor-fiscal.md` | Subagente que revisa el portal contra esas reglas; solo lee |
+| `supabase/facturacion.sql` | Tablas `tickets` y `facturas`, permisos y las funciones `buscar_ticket` y `facturar_ticket` |
+| `supabase/tickets_practica.sql` | Los 12 tickets de `tickets_OCSO.pdf` (el 217-0044390 es de septiembre: debe rechazarse por fuera del mes) |
+| `sitio/cfdi.js`, `qr.js`, `pdf.js` | Reglas fiscales, código QR y PDF, sin librerías |
+
+La página nunca lee las tablas: solo llama a las dos funciones con la llave publishable. Los datos de `esquema.sql` (lista de interesados) no se usan en este portal.
