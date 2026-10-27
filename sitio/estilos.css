@@ -1,0 +1,103 @@
+:root{
+  --girasol:#F6B400; --cafe:#3B2A20; --crema:#FFF7E8; --hoja:#4E6B3A; --arena:#F1E4CC;
+  --titulos:"Fraunces",Georgia,serif; --texto:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--crema);color:var(--cafe);font:400 17px/1.55 var(--texto);-webkit-text-size-adjust:100%;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--titulos);font-weight:800;line-height:1.1;margin:0}
+h2{font-size:1.9rem;margin-bottom:.4rem}
+h3{font-size:1.15rem;font-weight:600}
+a{color:var(--hoja)}
+:focus-visible{outline:3px solid var(--hoja);outline-offset:2px}
+
+/* Portada */
+.portada{text-align:center;padding:max(20px,env(safe-area-inset-top)) 20px 36px;background:radial-gradient(120% 70% at 50% 28%,#FFE9A8 0%,var(--crema) 70%)}
+.marca{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin:0 0 4px}
+.escenario{position:relative;perspective:900px;width:min(78vw,340px);margin:6px auto 14px;touch-action:pan-y}
+.sol{position:absolute;inset:8% -14% 10%;border-radius:50%;background:radial-gradient(circle,var(--girasol) 0%,rgba(246,180,0,0) 68%);opacity:.55;transform:translateZ(-40px);filter:blur(6px)}
+.tarjeta3d{position:relative;transform-style:preserve-3d;transition:transform .12s ease-out;will-change:transform}
+.tarjeta3d img{border-radius:22px;box-shadow:0 30px 40px -18px rgba(59,42,32,.45);transform:translateZ(30px)}
+.etiqueta{display:inline-block;background:var(--cafe);color:var(--crema);font-weight:700;font-size:.8rem;padding:.3rem .8rem;border-radius:99px;margin:6px 0 12px}
+.portada h1{font-size:clamp(2.3rem,10vw,3.6rem)}
+.frase{font-size:1.15rem;margin:.6rem auto 1.3rem;max-width:22em}
+.pista{font-size:.82rem;opacity:.7;margin:.8rem 0 0}
+.boton{display:inline-block;background:var(--girasol);color:var(--cafe);font:700 1.05rem var(--texto);border:0;border-radius:99px;padding:.95rem 1.8rem;text-decoration:none;cursor:pointer;box-shadow:0 6px 0 #B88A00;transition:transform .1s,box-shadow .1s;min-height:48px}
+.boton:active{transform:translateY(4px);box-shadow:0 2px 0 #B88A00}
+.boton:disabled{opacity:.6;cursor:wait}
+
+/* Franja */
+.franja{background:var(--cafe);color:var(--crema);text-align:center;padding:34px 20px}
+.franja h2{font-size:1.4rem}
+.cuenta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:420px;margin:16px auto 10px}
+.cuenta div{background:rgba(255,247,232,.1);border-radius:14px;padding:12px 4px}
+.cuenta b{display:block;font:800 2rem/1 var(--titulos);color:var(--girasol);font-variant-numeric:tabular-nums}
+.cuenta span{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.nota{font-size:.9rem;opacity:.85;margin:0 auto 14px;max-width:26em}
+.lista-n{display:inline-block;background:var(--girasol);color:var(--cafe);font-weight:700;border-radius:99px;padding:.45rem 1.1rem;margin:0}
+.lista-n b{font-family:var(--titulos);font-size:1.2em}
+
+/* Secciones */
+.seccion{padding:44px 20px;max-width:640px;margin:0 auto}
+.seccion.arena{max-width:none;background:var(--arena);text-align:center}
+.seccion.arena>*{max-width:600px;margin-left:auto;margin-right:auto}
+.sub{margin:0 0 1.4rem}
+.beneficios{list-style:none;padding:0;margin:1.4rem 0;display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.beneficios li{background:var(--arena);border-radius:18px;padding:16px 14px}
+.beneficios svg{width:40px;height:40px;fill:none;stroke:var(--hoja);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:8px}
+.beneficios p{margin:.3rem 0 0;font-size:.92rem;line-height:1.4}
+.detalle{margin:0}
+.detalle img{border-radius:20px;width:100%}
+.detalle figcaption{font-size:.88rem;opacity:.8;margin-top:8px;text-align:center}
+
+/* Colores */
+.vista-color{width:min(70vw,300px);margin:0 auto 16px}
+.vista-color img{border-radius:20px;box-shadow:0 18px 30px -16px rgba(59,42,32,.5);transition:opacity .2s}
+.colores{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.colores button{display:flex;align-items:center;gap:8px;background:var(--crema);color:var(--cafe);border:2px solid transparent;border-radius:99px;padding:.55rem 1rem .55rem .6rem;font:700 .95rem var(--texto);cursor:pointer;min-height:44px}
+.colores button i{width:24px;height:24px;border-radius:50%;border:2px solid rgba(59,42,32,.3)}
+.colores button[aria-checked="true"]{border-color:var(--cafe);background:#fff}
+.precio{margin:1.4rem auto 0}
+.precio b{color:var(--hoja);font-size:1.2em}
+
+/* Formulario */
+form{display:grid;gap:14px}
+label{display:grid;gap:5px;font-weight:700;font-size:.95rem}
+label small{font-weight:400}
+input,select{font:400 1rem var(--texto);color:var(--cafe);background:#fff;border:2px solid var(--arena);border-radius:12px;padding:.8rem .9rem;min-height:48px;width:100%}
+input:focus,select:focus{border-color:var(--girasol);outline:none}
+input:invalid:not(:placeholder-shown):not(:focus){border-color:#B3402A}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.privacidad-mini{font-size:.85rem;margin:0}
+.mensaje{margin:0;min-height:1.4em;font-weight:700;color:#B3402A}
+.mensaje.ok{color:var(--hoja)}
+.exito{text-align:center;background:var(--arena);border-radius:22px;padding:30px 20px}
+.exito[hidden]{display:none}
+.girasol{font-size:4rem;animation:gira 1.6s ease-out}
+@keyframes gira{from{transform:scale(0) rotate(-200deg)}to{transform:scale(1) rotate(0)}}
+
+/* Preguntas */
+details{border-bottom:2px solid var(--arena);padding:.9rem 0}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;min-height:32px}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--hoja)}
+details[open] summary::after{content:"–"}
+summary::-webkit-details-marker{display:none}
+details p{margin:.6rem 0 0}
+.privacidad{font-size:.92rem;background:var(--arena);border-radius:20px;margin:0 20px 30px;max-width:none}
+.privacidad h2{font-size:1.3rem}
+@media(min-width:680px){.privacidad{margin:0 auto 30px;max-width:600px}}
+
+footer{background:var(--cafe);color:var(--crema);text-align:center;padding:28px 20px;font-size:.95rem}
+footer p{margin:.2rem 0}
+.chico{font-size:.8rem;opacity:.7}
+#confeti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+@media(min-width:680px){
+  .beneficios{grid-template-columns:repeat(4,1fr);max-width:none}
+  .seccion{max-width:760px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}

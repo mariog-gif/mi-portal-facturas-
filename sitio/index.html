@@ -1,6 +1,154 @@
 <!doctype html>
-<html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muy pronto</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FFF7E8;color:#3B2A20;font:18px/1.4 system-ui,sans-serif;text-align:center;padding:24px}</style></head>
-<body><main><h1>Muy pronto</h1><p>Esta página se está construyendo con Claude.</p></main></body>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chamarra Ligera Girasol | Boutique El Girasol</title>
+  <meta name="description" content="La Chamarra Ligera Girasol sale el sábado 14 de noviembre. Apúntate a la lista y aparta tu talla y color sin costo.">
+  <meta name="theme-color" content="#FFF7E8">
+  <meta property="og:title" content="Chamarra Ligera Girasol">
+  <meta property="og:description" content="Ligerísima, abriga y se guarda en su bolsita. Apúntate a la lista de lanzamiento.">
+  <meta property="og:image" content="img/chamarra-amarilla.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fraunces:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/chamarra-amarilla.webp">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="portada" id="portada">
+  <p class="marca">Boutique El Girasol</p>
+  <div class="escenario" id="escenario">
+    <div class="sol" aria-hidden="true"></div>
+    <div class="tarjeta3d" id="tarjeta3d">
+      <img id="fotoPortada" src="img/chamarra-amarilla.webp" width="720" height="960" alt="Chamarra Ligera Girasol en color amarillo girasol, sobre fondo crema" fetchpriority="high">
+    </div>
+  </div>
+  <p class="etiqueta">Nuevo · Sábado 14 de noviembre</p>
+  <h1>Chamarra Ligera Girasol</h1>
+  <p class="frase">Se siente como nada y abriga como un abrazo.</p>
+  <a class="boton" href="#registro">Quiero que me avisen</a>
+  <p class="pista" id="pista3d" hidden>Mueve tu celular para verla de lado</p>
+</header>
+
+<main>
+  <section class="franja" aria-labelledby="t-cuenta">
+    <h2 id="t-cuenta">Falta poquito para el lanzamiento</h2>
+    <div class="cuenta" id="cuenta" role="timer" aria-live="off">
+      <div><b id="cd-d">--</b><span>días</span></div>
+      <div><b id="cd-h">--</b><span>horas</span></div>
+      <div><b id="cd-m">--</b><span>min</span></div>
+      <div><b id="cd-s">--</b><span>seg</span></div>
+    </div>
+    <p class="nota">Sábado 14 de noviembre, 10:00 h, en las tres sucursales (Centro, Norte y Sur) y en línea.</p>
+    <p class="lista-n" id="contador" aria-live="polite">Ya somos <b id="nLista">…</b> en la lista</p>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-gusta">
+    <h2 id="t-gusta">Por qué te va a gustar</h2>
+    <ul class="beneficios">
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c-8 8-10 14-10 20a10 10 0 0 0 20 0c0-6-2-12-10-20z"/><path d="M24 26v14"/></svg>
+        <h3>Ligerísima</h3><p>Solo 380 g. Apenas sientes que la traes puesta.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 30a8 8 0 0 1 1-16 10 10 0 0 1 19 2 7 7 0 0 1-1 14z"/><path d="M18 38l-2 4M26 38l-2 4M34 38l-2 4"/></svg>
+        <h3>Repele la lluvia ligera</h3><p>Sales sin paraguas cuando solo está chispeando.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="14" width="30" height="24" rx="4"/><path d="M9 22h30M20 22v6h8v-6"/></svg>
+        <h3>Dos bolsillos con cierre</h3><p>Llaves y celular se quedan donde los dejaste.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 20h28l-3 20H13z"/><path d="M17 20c0-8 14-8 14 0"/></svg>
+        <h3>Cabe en su bolsita</h3><p>Se guarda en su propia bolsita y se va contigo a todos lados.</p>
+      </li>
+    </ul>
+    <figure class="detalle">
+      <img src="img/detalle.webp" width="600" height="600" loading="lazy" alt="Acercamiento a la tela acolchada de la chamarra">
+      <figcaption>Tela acolchada con forro suave por dentro.</figcaption>
+    </figure>
+  </section>
+
+  <section class="seccion arena" aria-labelledby="t-colores">
+    <h2 id="t-colores">Elige tu color</h2>
+    <p class="sub">Toca un color y mira cómo se ve.</p>
+    <div class="vista-color"><img id="fotoColor" src="img/chamarra-amarilla.webp" width="720" height="960" loading="lazy" alt="Chamarra Ligera Girasol en color amarillo girasol"></div>
+    <div class="colores" id="colores" role="radiogroup" aria-label="Color de la chamarra">
+      <button type="button" role="radio" aria-checked="true" data-color="Amarillo girasol" data-foto="img/chamarra-amarilla.webp" data-alt="Chamarra Ligera Girasol en color amarillo girasol"><i style="background:#F6B400"></i>Amarillo girasol</button>
+      <button type="button" role="radio" aria-checked="false" data-color="Arena" data-foto="img/chamarra-arena.webp" data-alt="Chamarra Ligera Girasol en color arena"><i style="background:#D9C29A"></i>Arena</button>
+      <button type="button" role="radio" aria-checked="false" data-color="Azul noche" data-foto="img/chamarra-azul.webp" data-alt="Chamarra Ligera Girasol en color azul noche"><i style="background:#1F2F4D"></i>Azul noche</button>
+    </div>
+    <p class="precio">Precio regular <s>$1,900</s> · <b>$1,690</b> de lanzamiento, solo la primera semana</p>
+  </section>
+
+  <section class="seccion" id="registro" aria-labelledby="t-registro">
+    <h2 id="t-registro">Apúntate a la lista</h2>
+    <p class="sub">Te avisamos un día antes y apartamos tu talla y color sin costo.</p>
+    <form id="forma" novalidate>
+      <label>Nombre
+        <input name="nombre" type="text" autocomplete="name" required minlength="2" maxlength="80">
+      </label>
+      <label>Correo
+        <input name="correo" type="email" autocomplete="email" inputmode="email" required maxlength="120">
+      </label>
+      <label>WhatsApp <small>(opcional)</small>
+        <input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="449 123 4567">
+      </label>
+      <div class="par">
+        <label>Talla
+          <select name="talla" required>
+            <option value="">Elige</option><option>CH</option><option>M</option><option>G</option><option>XG</option>
+          </select>
+        </label>
+        <label>Color
+          <select name="color" id="selColor" required>
+            <option>Amarillo girasol</option><option>Arena</option><option>Azul noche</option>
+          </select>
+        </label>
+      </div>
+      <label>¿Cuándo piensas comprar?
+        <select name="cuando" required>
+          <option value="">Elige</option>
+          <option>Este mes</option><option>En los próximos 3 meses</option><option>Solo estoy viendo</option>
+        </select>
+      </label>
+      <p class="privacidad-mini">Al apuntarte aceptas el <a href="#privacidad">aviso de privacidad</a>.</p>
+      <button class="boton" type="submit" id="enviar">Apuntarme</button>
+      <p class="mensaje" id="mensaje" role="status" aria-live="polite"></p>
+    </form>
+    <div class="exito" id="exito" hidden>
+      <div class="girasol" aria-hidden="true">🌻</div>
+      <h3>¡Ya estás en la lista!</h3>
+      <p>Te mandamos un correo de bienvenida en unos minutos.</p>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-faq">
+    <h2 id="t-faq">Preguntas frecuentes</h2>
+    <details><summary>¿Cuándo sale?</summary><p>El sábado 14 de noviembre de 2026, a las 10:00 h, en las tres sucursales (Centro, Norte y Sur) y en línea.</p></details>
+    <details><summary>¿Cuánto cuesta?</summary><p>El precio regular es de $1,900. Durante la primera semana tiene precio de lanzamiento: $1,690.</p></details>
+    <details><summary>¿Qué gano si me apunto?</summary><p>Te avisamos un día antes y apartamos tu talla y color sin costo.</p></details>
+    <details><summary>¿Qué tallas y colores hay?</summary><p>Tallas CH, M, G y XG. Colores: amarillo girasol, arena y azul noche.</p></details>
+    <details><summary>¿Se moja si llueve?</summary><p>Repele la lluvia ligera. Para un aguacero fuerte, mejor un paraguas.</p></details>
+    <details><summary>¿Cómo me doy de baja?</summary><p>Responde "baja" a cualquier correo que te mandemos.</p></details>
+  </section>
+
+  <section class="seccion privacidad" id="privacidad" aria-labelledby="t-priv">
+    <h2 id="t-priv">Aviso de privacidad</h2>
+    <p>Tus datos (nombre, correo, WhatsApp si lo das, talla, color y cuándo piensas comprar) los recibe Boutique El Girasol, una tienda de práctica. Los usamos solo para avisarte del lanzamiento y apartar tu talla. No los compartimos con nadie. Para darte de baja, responde "baja" al correo que te mandemos.</p>
+  </section>
+</main>
+
+<footer>
+  <p>🌻 Boutique El Girasol · Centro, Norte y Sur · Aguascalientes</p>
+  <p class="chico">Tienda de práctica. Proyecto del curso Claude for Business.</p>
+</footer>
+
+<canvas id="confeti" aria-hidden="true"></canvas>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
