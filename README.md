@@ -20,3 +20,7 @@ El ejemplo es la **Chamarra Ligera Girasol** de Boutique El Girasol, una tienda 
 ## Regla de oro con Netlify
 
 Cada publicación de `main` gasta créditos del plan gratis. Los cambios se hacen en una rama y se revisan en la vista previa del Pull Request, que es gratis. Se fusiona una sola vez, cuando ya quedó.
+
+## Cómo revisar la vista previa
+
+Abre la liga que Netlify comenta en el Pull Request, registra un correo de prueba en el formulario y confirma que el contador "Ya somos N en la lista" sube.
